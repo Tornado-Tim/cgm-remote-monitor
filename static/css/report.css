@@ -10,8 +10,8 @@ html, body {
 }
 body {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  background: white;
-  color: black;
+  background: linear-gradient(black,#020229,black);
+  color: #adabab;
 }
 
 .centeraligned {
