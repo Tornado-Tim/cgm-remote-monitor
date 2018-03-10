@@ -18,9 +18,9 @@
   report_plugins.addHtmlFromPlugins( client );
   // make show() accessible outside for treatments.js
   report_plugins.show = show;
-  
+
   var translate = client.translate;
-  
+
   var maxInsulinValue = 0
       ,maxCarbsValue = 0
       ,maxDailyCarbsValue = 0;
@@ -28,7 +28,7 @@
   var datastorage = {};
   var daystoshow = {};
   var sorteddaystoshow = [];
-  
+
   var targetBGdefault = {
     'mg/dl': {
       low: client.settings.thresholds.bgTargetBottom
@@ -39,15 +39,15 @@
       , high: client.utils.scaleMgdl(client.settings.thresholds.bgTargetTop)
     }
   };
-  
+
   var ONE_MIN_IN_MS = 60000;
-  
+
   prepareGUI();
 
   // ****** FOOD CODE START ******
   var food_categories = [];
   var food_list = [];
-  
+
   var filter = {
       category: ''
     , subcategory: ''
@@ -65,7 +65,7 @@
     $('#rp_category').change(fillFoodSubcategories);
     $('#rp_subcategory').change(doFoodFilter);
     $('#rp_name').on('input',doFoodFilter);
-  
+
     return maybePrevent(event);
   }
 
@@ -100,7 +100,7 @@
       o += translate('Carbs')+': ' + food_list[i].carbs+' g';
       $('#rp_food').append('<option value="' + food_list[i]._id + '">' + o + '</option>');
     }
-    
+
     return maybePrevent(event);
   }
 
@@ -129,21 +129,21 @@
     $('#info').html('');
 
     $('.rp_foodgui').css('display','');
-    $('#rp_food').change(function (event) { 
+    $('#rp_food').change(function (event) {
       $('#rp_enablefood').prop('checked',true);
       return maybePrevent(event);
     });
   }
-  
+
   function disableFoodGUI(){
     $('#info').html('');
     $('.rp_foodgui').css('display','none');
   }
-  
+
   // ****** FOOD CODE END ******
 
   function prepareGUI() {
-    $('.presetdates').click(function(event) { 
+    $('.presetdates').click(function(event) {
       var days = $(this).attr('days');
       $('#rp_enabledate').prop('checked',true);
       return setDataRange(event,days);
@@ -157,14 +157,14 @@
       $('#rp_enableeventtype').prop('checked',true);
       return maybePrevent(event);
     });
-    
+
     // fill careportal events
     $('#rp_eventtype').empty();
     _.each(client.careportal.events, function eachEvent(event) {
       $('#rp_eventtype').append('<option value="' + event.val+ '">' + translate(event.name) + '</option>');
     });
     $('#rp_eventtype').append('<option value="sensor">' + '>>> ' + translate('All sensor events') + '</option>');
-    
+
     $('#rp_targetlow').val(targetBGdefault[client.settings.units.toLowerCase()].low);
     $('#rp_targethigh').val(targetBGdefault[client.settings.units.toLowerCase()].high);
 
@@ -173,14 +173,14 @@
     } else {
       $('#rp_log').prop('checked', true);
     }
-    
+
     $('.menutab').click(switchreport_handler);
 
     setDataRange(null,7);
   }
-  
+
   function sgvToColor(sgv,options) {
-    var color = 'darkgreen';
+    var color = '#4cff00';
 
     if (sgv > options.targetHigh) {
       color = 'red';
@@ -212,7 +212,7 @@
     // default time range if no time range specified in GUI
     var zone = client.sbx.data.profile.getTimezone();
     var timerange = '&find[created_at][$gte]='+moment.tz('2000-01-01',zone).toISOString();
-    //console.log(timerange,zone);    
+    //console.log(timerange,zone);
     options.targetLow = parseFloat($('#rp_targetlow').val().replace(',','.'));
     options.targetHigh = parseFloat($('#rp_targethigh').val().replace(',','.'));
     options.raw = $('#rp_optionsraw').is(':checked');
@@ -229,7 +229,7 @@
     options.order = ( $('#rp_oldestontop').is(':checked') ? report_plugins.consts.ORDER_OLDESTONTOP : report_plugins.consts.ORDER_NEWESTONTOP );
     options.width = parseInt($('#rp_size :selected').attr('x'));
     options.height = parseInt($('#rp_size :selected').attr('y'));
-    
+
     var matchesneeded = 0;
 
     // date range
@@ -241,7 +241,7 @@
         timerange = '&find[created_at][$gte]='+from.toISOString()+'&find[created_at][$lt]='+to.toISOString();
         //console.log($('#rp_from').val(),$('#rp_to').val(),zone,timerange);
         while (from <= to) {
-          if (daystoshow[from.format('YYYY-MM-DD')]) { 
+          if (daystoshow[from.format('YYYY-MM-DD')]) {
             daystoshow[from.format('YYYY-MM-DD')]++;
           } else {
             daystoshow[from.format('YYYY-MM-DD')] = 1;
@@ -289,7 +289,7 @@
         notesfilter();
       }
     }
-    
+
     //notes filter
     function notesfilter() {
       if ($('#rp_enablenotes').is(':checked')) {
@@ -326,7 +326,7 @@
         eventtypefilter();
       }
     }
-    
+
     //event type filter
     function eventtypefilter() {
       if ($('#rp_enableeventtype').is(':checked')) {
@@ -363,7 +363,7 @@
         daysfilter();
       }
     }
-    
+
     function daysfilter() {
       matchesneeded++;
       Object.keys(daystoshow).forEach( function eachDay(d) {
@@ -380,7 +380,7 @@
       addPreviousDayTreatments();
       display();
     }
-    
+
     function display() {
       var count = 0;
       sorteddaystoshow = [];
@@ -400,10 +400,10 @@
         $('#rp_show').css('display','');
       }
     }
-    
+
     var dayscount = 0;
     var loadeddays = 0;
-    
+
     function countDays() {
       for (var d in daystoshow) {
         if (daystoshow.hasOwnProperty(d)) {
@@ -418,7 +418,7 @@
       }
       //console.log('Total: ', daystoshow, 'Matches needed: ', matchesneeded, 'Will be loaded: ', dayscount);
    }
-    
+
      function addPreviousDayTreatments() {
       for (var d in daystoshow) {
         if (daystoshow.hasOwnProperty(d)) {
@@ -434,7 +434,7 @@
       }
       //console.log('Total: ', daystoshow, 'Matches needed: ', matchesneeded, 'Will be loaded: ', dayscount);
    }
-    
+
     function dataLoadedCallback (day) {
       loadeddays++;
       if (!daystoshow[day].treatmentsonly) {
@@ -456,14 +456,14 @@
         });
       }
     }
-    
+
     $('#rp_show').css('display','none');
     daystoshow = {};
 
     datefilter();
     return maybePrevent(event);
   }
-  
+
   function showreports(options) {
     // prepare some data used in more reports
     datastorage.allstatsrecords = [];
@@ -490,7 +490,7 @@
     });
     datastorage.tempbasalTreatments = Nightscout.client.ddata.processDurations(datastorage.tempbasalTreatments);
     datastorage.treatments.sort(function sort(a, b) {return a.mills - b.mills; });
-    
+
      for (var d in daystoshow) {
         if (daystoshow.hasOwnProperty(d)) {
           if (daystoshow[d].treatmentsonly) {
@@ -514,14 +514,14 @@
       if (skipRender) {
         console.log('Skipping ',plugin.name);
       } else {
-      	plugin.report(datastorage,sorteddaystoshow,options);  
+      	plugin.report(datastorage,sorteddaystoshow,options);
       }
 
       if (!$('#'+plugin.name).hasClass('selected')) {
         $('#'+plugin.name+'-placeholder').css('display','none');
       }
     });
-    
+
     $('#info').html('');
     $('#rp_show').css('display','');
   }
@@ -531,18 +531,18 @@
     $('#rp_from').val(moment().add(-days+1, 'days').format('YYYY-MM-DD'));
     return maybePrevent(event);
   }
-  
+
   function switchreport_handler(event) {
     var id = $(this).attr('id');
-    
+
     $('.menutab').removeClass('selected');
     $('#'+id).addClass('selected');
-    
+
     $('.tabplaceholder').css('display','none');
     $('#'+id+'-placeholder').css('display','');
     return maybePrevent(event);
   }
-  
+
   function loadData(day, options, callback) {
     // check for loaded data
     if ((options.openAps || options.iob || options.cob) && datastorage[day] && !datastorage[day].devicestatus.length) {
@@ -784,18 +784,18 @@
       }
       return true;
     });
-    
+
     data.sgv = data.sgv.map(function eachSgv (sgv) {
       var status = _.find(data.devicestatus, function (d) {
         return d.mills >= sgv.mills && d.mills < sgv.mills + 5 * 60 * 1000;
       });
-      
+
       if (status && status.openaps) {
         sgv.openaps = status.openaps;
       }
       return sgv;
     });
-    
+
     // for other reports
     data.statsrecords = data.sgv.filter(function(r) {
       if (r.type) {
@@ -803,15 +803,15 @@
       } else {
         return true;
       }
-    }).map(function (r) { 
+    }).map(function (r) {
       var ret = {};
-      ret.sgv = parseFloat(r.sgv); 
+      ret.sgv = parseFloat(r.sgv);
       ret.bgValue = parseInt(r.y);
       ret.displayTime = r.date;
       return ret;
     });
 
-    
+
     datastorage[day] = data;
     $('#info-' + day).html('');
     callback(day);
