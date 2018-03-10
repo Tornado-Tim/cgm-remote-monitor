@@ -185,7 +185,7 @@
     if (sgv > options.targetHigh) {
       color = 'red';
     } else if (sgv < options.targetLow) {
-      color = 'red';
+      color = 'blue';
     }
 
     return color;
