@@ -13,7 +13,7 @@ body {
   background: linear-gradient(#2A2A2A, #4A4A4A);
   color: #adabab;
 }
-#daytodaycharts > table > tbody > tr > td > div {
+.chart , #daytodaycharts > table > tbody > tr > td > div {
     background: -webkit-radial-gradient(top left,400px 400px, rgba(0, 0, 0, 0.6), transparent),-webkit-radial-gradient(top right,400px 400px, rgba(0, 0, 0, 0.6), transparent),-webkit-radial-gradient(bottom left,400px 400px, rgba(0, 0, 0, 0.6), transparent),-webkit-radial-gradient(bottom right,400px 400px, rgba(0, 0, 0, 0.6), transparent);
     background: -moz-radial-gradient(left top, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-moz-radial-gradient(right top, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-moz-radial-gradient(left bottom, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-moz-radial-gradient(right bottom, rgba(0, 0, 0, 0.6) 0px, transparent 400px);
     background: -ms-radial-gradient(left top, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-ms-radial-gradient(right top, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-ms-radial-gradient(left bottom, rgba(0, 0, 0, 0.6) 0px, transparent 400px),-ms-radial-gradient(right bottom, rgba(0, 0, 0, 0.6) 0px, transparent 400px);
