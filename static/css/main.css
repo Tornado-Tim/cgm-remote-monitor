@@ -129,8 +129,11 @@ a, a:visited, a:link {
   color: yellow;
 }
 
+.bgStatus.current .currentBG .inrange {
+   text-shadow: 0px 0px 8px white;
+}
 .inrange .bgButton {
-  color: #4cff00;
+    color: #3fce02;
 }
 
 .bgStatus .currentBG {
