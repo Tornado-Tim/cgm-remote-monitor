@@ -1,7 +1,12 @@
 @import url("//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic");
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800");
 @import url("/glyphs/css/fontello.css");
-
+@font-face {
+font-family: 'Samsung Sans Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Samsung Sans Regular'), url('../font/SamsungSans-Regular.woff') format('woff');
+}
 
 html, body {
   min-height: 100%;
@@ -9,7 +14,7 @@ html, body {
   padding: 0;
 }
 body {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Samsung Sans Regular','Open Sans', Helvetica, Arial, sans-serif;
   background: linear-gradient(#2A2A2A, #4A4A4A);
   color: #adabab;
 }
@@ -67,13 +72,13 @@ hr {
 }
 
 #explanation {
-  font: 11px verdana, arial, sans-serif;
+  font: 11px 'Samsung Sans Regular', verdana, arial, sans-serif;
 }
 
 #tabnav {
   text-align: left;
   margin: 1em 0 1em 0;
-  font: bold 11px verdana, arial, sans-serif;
+  font: bold 11px 'Samsung Sans Regular', verdana, arial, sans-serif;
   border-bottom: 1px solid #bdbdbd;
   list-style-type: none;
   padding: 3px 10px 3px 10px;
