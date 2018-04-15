@@ -333,25 +333,24 @@ a, a:visited, a:link {
   padding: 0 2px;
 }
 
+
 .alarming .bgButton {
-  border-color: #bdbdbd;
-  color: #000;
-  box-shadow: 2px 2px 0 #ddd;
+  color: #000'
 }
 
 .alarming.urgent .bgButton {
   background-color: red;
+  box-shadow: inset 0px 0px 40px 5px #d80505, 0px 0px 40px 5px red;
 }
 
 .alarming.warning .bgButton {
   background-color: yellow;
+  box-shadow: inset 0px 0px 40px 5px red, 0px 0px 40px 5px red;
 }
 
 .alarming .bgButton:active {
-  border: 2px solid #bdbdbd;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
+  color: #000;
+  box-shadow: inset 0px 0px 40px 5px red;
 }
 
 
