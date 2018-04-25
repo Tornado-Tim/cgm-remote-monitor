@@ -359,7 +359,31 @@ a, a:visited, a:link {
   background: #ababab;
   margin: 10px auto;
 }
-
+@-webkit-keyframes pulse {
+  0% {
+    text-shadow: 0 0 0 white;
+  }
+  70% {
+      text-shadow: 0 0 20px white;
+  }
+  100% {
+      text-shadow: 0 0 0 white;
+  }
+}
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 0 white;
+  }
+  70% {
+      text-shadow: 0 0 20px white;
+  }
+  100% {
+      text-shadow: 0 0 0 white;
+  }
+}
+.pulse{
+  animation: pulse 3s infinite;
+}
 .tooltip {
   top: 0;
   left: 0;
