@@ -359,30 +359,35 @@ a, a:visited, a:link {
   background: #ababab;
   margin: 10px auto;
 }
-@-webkit-keyframes pulse-white {
-  0% {
-      text-shadow: 0 0 0 white;
-  }
-  70% {
-      text-shadow: 0 0 20px white;
-  }
-  100% {
-      text-shadow: 0 0 0 white;
-  }
-}
 @keyframes pulse-white {
   0% {
       text-shadow: 0 0 0 white;
+      color:black;
   }
   70% {
       text-shadow: 0 0 20px white;
+      color:white
   }
   100% {
       text-shadow: 0 0 0 white;
+      color:black;
   }
 }
-.pulse-white{
-  animation: pulse-white 3s infinite;
+.openaps-enacted:after {
+    animation: pulse-white 3s infinite;
+    content: "⌁";
+}
+.openaps-notenacted:after {
+    content: "x";
+}
+.openaps-looping:after {
+    content: "↻";
+}
+.openaps-waiting:after {
+    content: "◉";
+}
+.openaps-warning:after {
+    content: "⚠";
 }
 .tooltip {
   top: 0;
