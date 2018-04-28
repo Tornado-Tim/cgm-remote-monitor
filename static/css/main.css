@@ -373,6 +373,14 @@ a, a:visited, a:link {
       color:black;
   }
 }
+@keyframes loop {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 .openaps-enacted:after {
     animation: pulse-white 3s infinite;
     content: "⌁";
@@ -381,6 +389,10 @@ a, a:visited, a:link {
     content: "x";
 }
 .openaps-looping:after {
+    animation-name: loop;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
     content: "↻";
 }
 .openaps-waiting:after {
