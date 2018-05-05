@@ -374,11 +374,19 @@ a, a:visited, a:link {
   }
 }
 @keyframes loop {
-    from {
+    0% {
         transform:rotate(0deg);
+        color:#029c02;
+        text-shadow: 1 1 0 black;
     }
-    to {
+    50% {
+        transform:rotate(180deg);
+        color:black;
+    }
+    100% {
         transform:rotate(360deg);
+        color:#029c02;
+        text-shadow: 1 1 0 black;
     }
 }
 .openaps-enacted:after {
