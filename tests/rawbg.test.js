@@ -26,7 +26,7 @@ describe('Raw BG', function ( ) {
     sbx.offerProperty = function mockedOfferProperty (name, setter) {
       name.should.equal('rawbg');
       var result = setter();
-      result.mgdl.should.equal(115);
+      result.mgdl.should.equal(113);
       result.noiseLabel.should.equal('Clean');
       done();
     };
@@ -46,7 +46,7 @@ describe('Raw BG', function ( ) {
 
     rawbg.alexa.intentHandlers[0].intentHandler(function next(title, response) {
       title.should.equal('Current Raw BG');
-      response.should.equal('Your raw bg is 115');
+      response.should.equal('Your raw bg is 113');
 
       done();
     }, [], sbx);
